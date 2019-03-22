@@ -51,16 +51,16 @@ function addUser(){
   
   let newUser = {
     username: addUserForm.username.value,
-    email: addUserForm.email.value,
     password: addUserForm.password.value
   };
+
+  window.localStorage.setItem(newUser.username, newUser.password);
   
   return true;
   
   function anyErrors(){
     let error = document.querySelector(".signup__error");
     if(addUserForm.username.validity.valueMissing ||
-      addUserForm.email.validity.valueMissing ||
       addUserForm.password.validity.valueMissing ||
       addUserForm.repeatPassword.validity.valueMissing){
       error.innerHTML = "All fields are required!";
@@ -82,7 +82,32 @@ function addUser(){
       return true;
     }
 
+    if(window.localStorage.getItem(addUserForm.username.value)){
+      error.innerHTML = "That username is already taken!";
+      return true;
+    }
+
     error.innerHTML = "";
     return false;
   }
 };
+
+function logIn(){
+  let getUserForm = document.getUserForm;
+
+  if(anyErrors())
+    return false;
+
+  function anyErrors(){
+    let error = document.querySelector(".login__error");
+    
+    if(window.localStorage.getItem(getUserForm.username.value) !== 
+      getUserForm.password.value){
+        error.innerHTML = "Username or password incorrect!";
+        return true;
+      }
+
+    error.innerHTML = "";
+    return false;
+  }
+}

@@ -78,11 +78,6 @@
                         placeholder="Choose a unique username"
                         minlength="5" maxLength="10" required>
 
-                    <h3>E-MAIL</h3>
-                    <input name="email"class="signup__input" type="text" 
-                        placeholder="your-email@example.com"
-                        required>
-
                     <h3>PASSWORD</h3>
                     <input name="password" class="signup__input" type="password" 
                         placeholder="Choose something secure"
@@ -91,7 +86,7 @@
                     <h3>REPEAT PASSWORD</h3>
                     <input name="repeatPassword" class="signup__input" type="password" 
                         placeholder="Repeat your password"
-                        required>
+                        maxLength = "10" required>
                 </form>
 
                 <p class="signup__error"></p>
@@ -118,12 +113,14 @@
             </article>
 
             <div class="signup__content">
-                <form class="signup__input__container">
+                <form name="getUserForm" class="signup__input__container">
                     <h3>USERNAME</h3>
                     <input name="username" class="signup__input" type="text" placeholder="Your own unique identifier" required>
                     <h3>PASSWORD</h3>
                     <input name="password" class="signup__input" type="password" placeholder="Something you thought was secure" required>
                 </form>
+
+                <p class="login__error"></p>
 
                 <div class="signup__button__container">
                     <button class="button-enter" onClick="logIn()">Log in</button>
