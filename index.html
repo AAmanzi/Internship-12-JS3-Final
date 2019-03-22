@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ARK by Alex - Acts of Random Kindness</title>
+    <link rel="stylesheet" href="./assets/styles/style.css"/>
+    <link rel="stylesheet" href="./assets/styles/login.css">
+</head>
+<body>
+    <div class="root">
+        <header>
+            <nav>
+                <div class="logo__container">
+                    <img class="logo" src="assets/images/logo.png" alt="Logo">
+                    <img class="logo-negative" src="assets/images/logoNegative.png" alt="Logo">
+                </div>
+                <ul class="header-right">
+                    <li>
+                        <button class="button-change">
+                            <img class="button-image" src="assets/images/moon.png" alt="theme" height="40" width="40">
+                            <img class="button-image-negative"src="assets/images/sun.png" alt="theme" height="40" width="40">
+                        </button>
+                    </li>
+
+                    <li>
+                        <button class="button-users">
+                            Users
+                        </button>
+                    </li>
+
+                    <li>
+                        <button class="button-full">Join Us</button>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="header__image__container">
+                <img class="header__image" src="assets/images/header__image.png" alt="main-picture">
+                <img class="header__image header__image-negative" src="assets/images/header__imageNegative.png" alt="main-picture">
+            </div>
+        </header>
+
+        <main>
+            <article class = "article__main">
+                <h1>
+                    We are building an ARK
+                    this Christmas!
+                </h1>
+
+                <p class="article__text">
+                    No, we don't mean a flood is coming. We just plan to put
+                        smiles on the faces of everyday people around us
+                    with our ARK (acts of random kindness).
+                </p>
+            </article>
+        </main>
+
+        <section class="signup__container">
+            <article class="signup__article">
+                <h1 class="signup__article__heading">
+                    Sign up
+                </h1>
+                <p class="signup__article__paragraph">
+                    ARK is much better when you have an account!
+                </p>
+                <div class="signup__logo__container">
+                    <img class="logo" src="assets/images/logo.png" alt="Logo">
+                    <img class="logo-negative" src="assets/images/logoNegative.png" alt="Logo">
+                </div>
+            </article>
+
+            <div class="signup__content">
+                <form name="addUserForm" class="signup__input__container">
+                    <h3>USERNAME</h3>
+                    <input name="username" class="signup__input" type="text" 
+                        placeholder="Choose a unique username"
+                        minlength="5" maxLength="10" required>
+
+                    <h3>E-MAIL</h3>
+                    <input name="email"class="signup__input" type="text" 
+                        placeholder="your-email@example.com"
+                        required>
+
+                    <h3>PASSWORD</h3>
+                    <input name="password" class="signup__input" type="password" 
+                        placeholder="Choose something secure"
+                        minlength="5" maxLength="10" required>
+
+                    <h3>REPEAT PASSWORD</h3>
+                    <input name="repeatPassword" class="signup__input" type="password" 
+                        placeholder="Repeat your password"
+                        required>
+                </form>
+
+                <p class="signup__error"></p>
+
+                <div class="signup__button__container">
+                    <button class="button-signup" onClick="addUser()">Sign up</button>
+                    <button class="button-login">Already have an account</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="login__container display-none">
+            <article class="signup__article">
+                <h1 class="signup__article__heading">
+                    Log in
+                </h1>
+                <p class="signup__article__paragraph">
+                    Welcome back to ARK!
+                </p>
+                <div class="signup__logo__container">
+                    <img class="logo" src="assets/images/logo.png" alt="Logo">
+                    <img class="logo-negative" src="assets/images/logoNegative.png" alt="Logo">
+                </div>
+            </article>
+
+            <div class="signup__content">
+                <form class="signup__input__container">
+                    <h3>USERNAME</h3>
+                    <input name="username" class="signup__input" type="text" placeholder="Your own unique identifier" required>
+                    <h3>PASSWORD</h3>
+                    <input name="password" class="signup__input" type="password" placeholder="Something you thought was secure" required>
+                </form>
+
+                <div class="signup__button__container">
+                    <button class="button-enter" onClick="logIn()">Log in</button>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <h3>Share with Friends</h3>
+            <ul class="container__social">
+                <li>
+                    <button class="button-social">
+                        <div class="share">
+                            <img src="assets/images/instagram.png" alt="instagram" height="12" width="12">
+                        </div>
+                    </button>
+                </li>
+
+                <li>
+                    <button class="button-social">
+                        <div class="share">
+                            <img src="assets/images/twitter.png" alt="twitter" height="12" width="15">
+                        </div>
+                    </button>
+                </li>
+
+                <li>
+                    <button class="button-social">
+                        <div class="share">
+                            <img src="assets/images/facebook.png" alt="facebook" height="12" width="6">
+                        </div>
+                    </button>
+                </li>
+            </ul>
+        </footer>
+    </div>
+    <script type="text/javascript" src="assets/scripts/script-main.js"></script>
+</body>
+</html>

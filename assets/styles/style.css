@@ -1,0 +1,193 @@
+@font-face {
+    font-family: "Graphik-Regular";
+    font-style: normal;
+    font-weight: 400;
+    src: url("../fonts/Graphik-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Graphik-Semibold";
+    font-style: normal;
+    font-weight: 600;
+    src: url("../fonts/Graphik-Semibold.ttf") format("truetype");
+}
+
+*{
+    margin: 0px;
+    padding: 0px;
+    cursor: url("../images/heart.png"), crosshair;
+}
+
+::selection{
+    color: #00baba;
+    background: #e8f8f8;
+}
+
+nav{
+    background-color: #e8f8f8;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-size: 10px 10px;
+}
+
+.button-change{ 
+    position:relative;
+    background-color: transparent;
+    border: none;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 100%;
+}
+
+.logo{
+    mix-blend-mode: multiply;
+    max-width: 170px;
+    height: 50px;
+}
+
+.button-users{
+    font-family: "Graphik-Semibold";
+    font-size: 15px;
+    background-color: transparent;
+    border: none;
+    padding: 40px 30px;
+    transition: all 0.1s ease-in;
+}
+
+.button-full{
+    font-family: "Graphik-Semibold";
+    font-size: 15px;
+    color: white;
+    background-color: #00baba;
+    border: none;
+    padding: 40px 30px;
+}
+
+.header-right{
+    display: flex;
+    align-content: flex-end;
+    list-style: none;
+}
+
+.header__image{
+    max-width: 100%;
+    height: 100%;
+}
+
+li{
+    align-content: center;
+}
+
+h1{
+    font-family: "Graphik-Semibold";
+    font-size: 35px;
+    text-align: center;
+    margin: auto;
+    margin-top: 30px;
+    max-width: 400px;
+    line-height: 40px;
+}
+
+p{
+    font-family: "Graphik-Regular";
+    font-size: 19px;
+    font-style: normal;
+    font-weight: 400;
+    margin: auto;
+    line-height: 24px;
+}
+
+a{
+    color: #00baba;
+    text-decoration: none;
+}
+
+.header__image__container{
+    position: relative;
+    background-color: #e8f8f8;
+    display: flex;
+    justify-content: center;
+}
+
+.article__main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h3{
+    font-family: "Graphik-Semibold";
+    font-size: 22px;
+    margin: 10px;
+    margin-right: 20px;
+}
+
+.article__text{
+    text-align: center;
+    max-width: 520px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+footer{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.share{
+    height: 15px;
+    width: 15px;
+}
+
+.container__social{
+    display: flex;
+    align-content: center;
+    list-style: none;
+}
+
+.button-social{
+    font-family: "Graphik-Semibold";
+    background-color: #e8f8f8;
+    border: none;
+    padding: 15px;
+    margin: 0px 5px;
+}
+
+.logo__container{
+    position: relative;
+}
+
+.logo-negative{
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity 0.4s ease-in;
+    opacity: 0;
+}
+
+.button-image-negative{
+    position: absolute;
+    left: 20px;
+    top: 25px;
+    transition: opacity 0.4s ease-in;
+    opacity: 0;
+}
+
+.visible{
+    opacity: 1 !important;
+}
+
+.header__image-negative{
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, 0);
+    transition: opacity 0.4s ease-in;
+    opacity: 0;
+}
+
+.display-none{
+    display: none !important;
+}

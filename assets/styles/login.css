@@ -1,0 +1,128 @@
+
+
+.button-close{
+  font-family: "Graphik-Semibold";
+  font-size: 15px;
+  background-color: transparent;
+  border: none;
+  transition: all 0.1s ease-in;
+}
+
+.signup__content{
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.close__wrapper{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.signup__article{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 40%;
+  background-color: #e8f8f8;
+}
+
+.signup__article__paragraph{
+  max-width: 70%;
+  margin-top: 0;
+  margin-bottom: 50px;
+}
+
+.signup__article__heading{
+  margin-bottom: 50px;
+}
+
+.signup__logo__container{
+  margin-right: 30%;
+}
+
+.signup__input__container{
+  position: relative;
+  width: 80%;
+}
+
+.signup__input{
+  align-self: center;
+  border: none;
+  border-bottom-style: solid;
+  border-color: #00baba;
+  background-color: #e8f8f8;
+  border-width: 1px;
+  font-family: "Graphik-Regular";
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 5px;
+  width: 100%;
+  font-size: 20px;
+}
+
+.button-signup{
+  font-family: "Graphik-Semibold";
+  font-size: 15px;
+  color: white;
+  background-color: #00baba;
+  border: none;
+  padding: 10px 30px;
+}
+
+.button-login{
+  font-family: "Graphik-Semibold";
+  font-size: 15px;
+  background-color: transparent;
+  border: none;
+  padding: 10px 30px;
+  transition: all 0.1s ease-in;
+}
+
+.signup__container{
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  transform: translate(-50%, 0);
+  transition: opacity 0.4s ease-in;
+  opacity: 0;
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+  margin: auto;
+  height: 400px;
+}
+
+.login__container{
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  transform: translate(-50%, 0);
+  transition: opacity 0.4s ease-in;
+  opacity: 0;
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+  margin: auto;
+  height: 400px;
+}
+
+.button-enter{
+  font-family: "Graphik-Semibold";
+  font-size: 15px;
+  color: white;
+  background-color: #00baba;
+  border: none;
+  padding: 30px 50px;
+}
+
+.signup__error{
+  font-weight: bolder;
+  text-decoration: underline;
+  color: darkred;
+}
