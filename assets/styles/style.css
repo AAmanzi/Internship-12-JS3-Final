@@ -15,7 +15,7 @@
 *{
     margin: 0px;
     padding: 0px;
-    cursor: url("../images/heart.png"), crosshair;
+    cursor: url("../images/heart.png"), auto;
 }
 
 ::selection{
