@@ -64,11 +64,11 @@ function displayUsers(){
   .then(allUsers => {
     allUsers.forEach(user => {
       userPlaceholder.innerHTML += 
-      `<div class="users__item">
+      `<div id="${user.id}" class="users__item">
         <img class="item__img" src="./assets/images/test_image.jpg" alt="Offer" />
         <img class="item__heart-shape" src="./assets/images/heart-shape.png" alt="Hearth Shape">
         <img class="item__heart-full" src="./assets/images/heart.png" alt="Hearth Full">
-        <p class="item__img-description">${user.username}</p>
+        <p class="item__img-description">${user.name}</p>
         <p class="item__paragraph">
             ${user.email}
         </p>
@@ -80,24 +80,69 @@ function displayUsers(){
     let allUsersHTML = document.querySelectorAll(".users__item");
 
     allUsersHTML.forEach(user => {
-      user.addEventListener("mouseover", function() {
+      user.addEventListener("mouseover", () => {
         let itemDescription = user.querySelector(".item__img-description");
         itemDescription.classList.add("item__img-description-hover");
       });
 
-      user.addEventListener("mouseout", function() {
+      user.addEventListener("mouseout", () => {
         let itemDescription = user.querySelector(".item__img-description");
         itemDescription.classList.remove("item__img-description-hover");
       });
       
       let itemHeart = user.querySelector(".item__heart-full");
 
-      itemHeart.addEventListener("click", function(event) {
+      itemHeart.addEventListener("click", (event) => {
         itemHeart.classList.toggle("item__heart-full-click");
         event.stopPropagation();
       });
 
       //item click event (posts)
+      user.addEventListener("click", () => {
+
+        fetch(`https://jsonplaceholder.typicode.com/users/${user.id}`)
+          .then(response => response.json())
+          .then(user => {
+            let userInfo = document.querySelector(".user__popup");
+
+            userInfo.innerHTML = `
+              <div class="user__info__wrapper">
+                <div class="user__info">
+                  <h1 class="user__name">${user.name}</h1>
+                  
+                  <p class="user__info__main">
+                    username: ${user.username} <br>
+                    email: ${user.email} <br>
+                    phone: ${user.phone} <br>
+                    website: ${user.website} <br>
+                  </p>
+                  
+                  <h2 class="user__address__title">Address:</h2>
+                  
+                  <p class="user__info__address">
+                    street: ${user.address.street} <br>
+                    city: ${user.address.city} <br>
+                    zipcode: ${user.address.zipcode} <br>
+                    suite: ${user.address.suite} <br>
+                  </p>
+
+                  <h2 class="user__company__title">Company:</h2>
+
+                  <p class="user__info__company">
+                    Name: ${user.company.name} <br>
+                  </p>
+                </div>
+                <button class="button-close__popup">Close</button>
+              </div>`;
+
+            userInfo.classList.remove("display-none");
+
+            buttonClose = userInfo.querySelector(".button-close__popup");
+            buttonClose.addEventListener("click", () => {
+              userInfo.classList.add("display-none");
+            })
+          });
+      });
 
     });
   });
