@@ -1,4 +1,4 @@
-let loggedIn = false;
+let loggedIn = true;
 
 document.querySelector(".logo__container").addEventListener("click", () => {
   displayMainPage();
@@ -72,12 +72,28 @@ function displayUsers(){
         <p class="item__paragraph">
             ${user.email}
         </p>
-        <span class="item__price">${user.address.city}</span>
+        <span class="item__price display-none">${user.address.city}</span>
       </div>`;
     });
+
+    userPlaceholder.innerHTML += '<span class="scroll-top display-none">^</span>';
   })
   .then(() => {
     let allUsersHTML = document.querySelectorAll(".users__item");
+
+    window.addEventListener("scroll", () => {
+      let scrollTop = userPlaceholder.querySelector(".scroll-top");
+      if(window.scrollY >= 100){
+        scrollTop.classList.remove("display-none");  
+        userPlaceholder.querySelector(".scroll-top").addEventListener("click", () => {
+          $("html, body").animate({ scrollTop: 0 }, "medium");
+        });  
+      }
+      else{
+        scrollTop.classList.add("display-none");
+      }
+    })
+
 
     allUsersHTML.forEach(user => {
       user.addEventListener("mouseover", () => {
@@ -139,6 +155,7 @@ function displayUsers(){
 
             buttonClose = userInfo.querySelector(".button-close__popup");
             buttonClose.addEventListener("click", () => {
+              userInfo.innerHTML = "";
               userInfo.classList.add("display-none");
             })
           });

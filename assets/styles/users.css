@@ -115,3 +115,22 @@
   border: none;
   padding: 20px;
 }
+
+.scroll-top{
+  position: fixed;
+  bottom: -15px;
+  right: 50px;
+  background-color: #00baba;
+  color: white;
+  font-weight: bolder;
+  font-size: 50px;
+  padding: 0 10px;
+  border-radius: 50%;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  transition: all 0.1s ease-in-out;
+}
+
+.scroll-top:hover{
+  bottom: 0;
+}
