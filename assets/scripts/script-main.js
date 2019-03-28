@@ -1,4 +1,5 @@
-let loggedIn = true;
+let loggedIn = false;
+//SETUP NA FALSE PRIJE ROKA
 
 document.querySelector(".logo__container").addEventListener("click", () => {
   displayMainPage();
@@ -72,7 +73,9 @@ function displayUsers(){
         <p class="item__paragraph">
             ${user.email}
         </p>
-        <span class="item__price display-none">${user.address.city}</span>
+        <span class="item__price">${user.address.city}</span>
+
+        <button class="button__posts">Posts</button>
       </div>`;
     });
 
@@ -86,7 +89,11 @@ function displayUsers(){
       if(window.scrollY >= 100){
         scrollTop.classList.remove("display-none");  
         userPlaceholder.querySelector(".scroll-top").addEventListener("click", () => {
-          $("html, body").animate({ scrollTop: 0 }, "medium");
+          window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+          });
         });  
       }
       else{
@@ -113,7 +120,53 @@ function displayUsers(){
         event.stopPropagation();
       });
 
-      //item click event (posts)
+      let postsButton = user.querySelector(".button__posts");
+
+      postsButton.addEventListener("click", (event) => {
+        fetch(`https://jsonplaceholder.typicode.com/posts?userId=${user.id}`)
+          .then(response => response.json())
+          .then(posts => {
+            let userInfo = document.querySelector(".user__popup");
+
+            userInfo.innerHTML += `
+              <div class="user__posts__wrapper">
+                <button class="button-close__popup button-close__popup--alt">Close</button>
+              </div>`;
+
+            let userPostsWrapper = userInfo.querySelector(".user__posts__wrapper");
+
+            posts.forEach(post => {
+              userPostsWrapper.innerHTML += `
+              <div class="post__item">
+                    <p>
+                        post id: ${post.id} <br>
+                        title: ${post.title} <br>
+                        ${post.body}
+                    </p>
+              </div>`;
+            });
+
+            userInfo.classList.remove("display-none");
+
+            document.getElementsByTagName("body")[0].classList.add("overflow-hidden");
+
+            buttonClose = userInfo.querySelector(".button-close__popup");
+            buttonClose.addEventListener("click", () => {
+              userInfo.innerHTML = "";
+              userInfo.classList.add("display-none");
+              document.getElementsByTagName("body")[0].classList.remove("overflow-hidden");
+            })
+          });
+
+          window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+          });
+
+          event.stopPropagation();
+      });
+
       user.addEventListener("click", () => {
 
         fetch(`https://jsonplaceholder.typicode.com/users/${user.id}`)
@@ -153,13 +206,18 @@ function displayUsers(){
 
             userInfo.classList.remove("display-none");
 
+            document.getElementsByTagName("body")[0].classList.add("overflow-hidden");
+
             buttonClose = userInfo.querySelector(".button-close__popup");
             buttonClose.addEventListener("click", () => {
               userInfo.innerHTML = "";
               userInfo.classList.add("display-none");
-            })
+              document.getElementsByTagName("body")[0].classList.remove("overflow-hidden");
+            });
           });
       });
+
+
 
     });
   });
