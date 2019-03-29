@@ -1,0 +1,31 @@
+.item__img-description--alt{
+  background: #111111df;
+}
+
+.item__heart-full--alt{
+  background: rgb(15, 34, 34);
+}
+
+.item__heart-shape--alt{
+  filter: invert(1);
+}
+
+.user__popup--alt{
+  background-color: rgba(1, 1, 1, 0.6)
+}
+
+.background-darker{
+  background-color: #111111;
+}
+
+.background-dark{
+  background-color: rgba(0, 186, 186, 0.1);
+}
+
+.color-grey{
+  color: grey;
+}
+
+.color-white{
+  color: white;
+}

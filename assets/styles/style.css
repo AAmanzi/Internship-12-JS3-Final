@@ -16,6 +16,7 @@
     margin: 0px;
     padding: 0px;
     cursor: url("../images/heart.png"), crosshair;
+    transition: all 0.2s ease-in-out;
 }
 
 ::selection{
@@ -40,7 +41,7 @@ nav{
     height: 100%;
 }
 
-.logo{
+.logo, .logo--alt{
     mix-blend-mode: multiply;
     max-width: 170px;
     height: 50px;
@@ -167,6 +168,13 @@ footer{
     opacity: 0;
 }
 
+.logo--alt-negative{
+    position: absolute;
+    bottom: 25px;
+    transition: opacity 0.4s ease-in;
+    opacity: 0;
+}
+
 .button-image-negative{
     position: absolute;
     left: 20px;
@@ -177,6 +185,10 @@ footer{
 
 .visible{
     opacity: 1 !important;
+}
+
+.invisible{
+    opacity: 0 !important;
 }
 
 .header__image-negative{

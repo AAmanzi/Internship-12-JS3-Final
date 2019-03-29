@@ -1,4 +1,5 @@
-let loggedIn = false;
+let loggedIn = true;
+let isDark = false;
 //SETUP NA FALSE PRIJE ROKA
 
 document.querySelector(".logo__container").addEventListener("click", () => {
@@ -124,4 +125,3 @@ function logIn(){
     return false;
   }
 };
-

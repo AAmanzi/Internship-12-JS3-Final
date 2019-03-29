@@ -20,9 +20,9 @@ function displayUsers(){
           userPlaceholder.innerHTML += 
           `<div id="${user.id}" class="users__item">
             <img class="item__img" src="./assets/images/test_image.jpg" alt="Offer" />
-            <img class="item__heart-shape" src="./assets/images/heart-shape.png" alt="Hearth Shape">
-            <img class="item__heart-full" src="./assets/images/heart.png" alt="Hearth Full">
-            <p class="item__img-description">${user.name}</p>
+            <img class="item__heart-shape ${isDark ? "item__heart-shape--alt": ""}" src="./assets/images/heart-shape.png" alt="Hearth Shape">
+            <img class="item__heart-full ${isDark ? "item__heart-full--alt": ""}" src="./assets/images/heart.png" alt="Hearth Full">
+            <p class="item__img-description ${isDark ? "item__img-description--alt": ""}">${user.name}</p>
             <p class="item__paragraph">
                 ${user.email}
             </p>
@@ -82,14 +82,7 @@ function displayUsers(){
               let userInfo = document.querySelector(".user__popup");
   
               userInfo.innerHTML = `
-                <div class="user__posts__wrapper">
-                  <button class="button-close__popup button-close__popup--alt">Close</button>
-                  <form name="addPostForm" class="post__new">
-                    <input name="title" class="post__new-title" type="text" placeholder="Your post's title" required>
-                    <textarea name="body" type="text" class="post__new-body" cols="50" rows="5" placeholder="Write something here" required></textarea>
-                  </form>
-                  <button class="button-post__add">Post</button>
-                </div>`;
+                <div class="user__posts__wrapper ${isDark ? "background-darker": ""}"></div>`;
   
               let userPostsWrapper = userInfo.querySelector(".user__posts__wrapper");
   
@@ -165,10 +158,10 @@ function displayUsers(){
               function refreshPosts(){
                 userPostsWrapper.innerHTML = `<button class="button-close__popup button-close__popup--alt">Close</button>
                   <form name="addPostForm" class="post__new">
-                    <input name="title" class="post__new-title" type="text" placeholder="Your post's title" required>
-                    <textarea name="body" type="text" class="post__new-body" cols="50" rows="5" placeholder="Write something here" required></textarea>
+                    <input name="title" class="post__new-title ${isDark ? "background-dark color-white": ""}" type="text" placeholder="Your post's title" required>
+                    <textarea name="body" type="text" class="post__new-body ${isDark ? "background-dark color-white": ""}" cols="50" rows="5" placeholder="Write something here" required></textarea>
                   </form>
-                  <button class="button-post__add">Post</button>`;
+                  <button class="button-post__add  ${isDark ? "background-dark color-grey": ""}">Post</button>`;
   
                 let storedPosts = JSON.parse(sessionStorage.getItem(user.id));
                 
@@ -226,7 +219,7 @@ function displayUsers(){
               let userInfo = document.querySelector(".user__popup");
   
               userInfo.innerHTML = `
-                <div class="user__info__wrapper">
+                <div class="user__info__wrapper ${isDark ? "background-darker": ""}">
                   <div class="user__info">
                     <h1 class="user__name">${user.name}</h1>
                     
