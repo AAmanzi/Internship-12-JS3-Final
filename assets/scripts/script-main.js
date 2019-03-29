@@ -52,6 +52,7 @@ function displayUsers(){
   if(!loggedIn){
     return false;
   }
+  
   document.querySelector(".header__image__container").classList.add("display-none");
   document.getElementsByTagName("main")[0].classList.add("display-none");
   document.getElementsByTagName("footer")[0].classList.add("display-none");
@@ -128,44 +129,132 @@ function displayUsers(){
           .then(posts => {
             let userInfo = document.querySelector(".user__popup");
 
-            userInfo.innerHTML += `
+            userInfo.innerHTML = `
               <div class="user__posts__wrapper">
-              <button class="button-close__popup button-close__popup--alt">Close</button>
-                <section class="post__new">
-                  <input class="post__new-title" type="text" placeholder="Your post's title" required>
-                  <textarea type="text" class="post__new-body" cols="50" rows="5" placeholder="Write something here" required></textarea>
-                  <button class="button-post__add">Post</button>
-                </section>
+                <button class="button-close__popup button-close__popup--alt">Close</button>
+                <form name="addPostForm" class="post__new">
+                  <input name="title" class="post__new-title" type="text" placeholder="Your post's title" required>
+                  <textarea name="body" type="text" class="post__new-body" cols="50" rows="5" placeholder="Write something here" required></textarea>
+                </form>
+                <button class="button-post__add">Post</button>
               </div>`;
 
             let userPostsWrapper = userInfo.querySelector(".user__posts__wrapper");
 
-            posts.reverse().forEach(post => {
-              userPostsWrapper.innerHTML += `
-              <div class="post__item">
-                    <p>
-                        post id: ${post.id} <br>
-                        title: ${post.title} <br>
-                        ${post.body}
-                    </p>
-              </div>`;
-            });
+            refreshPosts();
 
             userInfo.classList.remove("display-none");
 
             document.getElementsByTagName("body")[0].classList.add("overflow-hidden");
 
-            buttonClose = userInfo.querySelector(".button-close__popup");
-            buttonClose.addEventListener("click", () => {
-              userInfo.innerHTML = "";
-              userInfo.classList.add("display-none");
-              document.getElementsByTagName("body")[0].classList.remove("overflow-hidden");
-            });
+            function addPost(){
+              var addPostForm = document.addPostForm;
+            
+              if(anyErrors()){
+                return false;
+              }
+            
+              let newPost = {
+                title: addPostForm.title.value,
+                body: addPostForm.body.value
+              };
+            
+              fetch('https://jsonplaceholder.typicode.com/posts', 
+              {
+                  method: 'POST',
+                  body: JSON.stringify(
+                  {
+                     title: newPost.title,
+                     body: newPost.body,
+                     userId: user.id
+                  }),
+                  headers: 
+                  {
+                    "Content-type": "application/json; charset=UTF-8"
+                  }
+              })
+              .then(response => response.json())
+              .then(post => {
+                let postItem = {
+                  title: post.title,
+                  body: post.body,
+                  postId: post.id
+                }
 
-            buttonAddPost = userInfo.querySelector(".button-post__add");
-            buttonAddPost.addEventListener("click", () => {
+                let posts = [];
+                posts.push(postItem);
 
-            });
+                let storedPosts = JSON.parse(sessionStorage.getItem(user.id));
+                
+
+                if(storedPosts){
+                  storedPosts.forEach(post => {
+                    posts.push(post);
+                    postItem.postId++;
+                  });
+                }
+
+                sessionStorage.setItem(user.id, JSON.stringify(posts));
+
+                refreshPosts();
+              })
+            
+              return true;
+            
+              function anyErrors(){
+                if(addPostForm.title.validity.valueMissing ||
+                  addPostForm.body.validity.valueMissing){
+                  return true;
+                }
+                return false;
+              }
+            }
+
+            function refreshPosts(){
+              userPostsWrapper.innerHTML = `<button class="button-close__popup button-close__popup--alt">Close</button>
+                <form name="addPostForm" class="post__new">
+                  <input name="title" class="post__new-title" type="text" placeholder="Your post's title" required>
+                  <textarea name="body" type="text" class="post__new-body" cols="50" rows="5" placeholder="Write something here" required></textarea>
+                </form>
+                <button class="button-post__add">Post</button>`;
+
+              let storedPosts = JSON.parse(sessionStorage.getItem(user.id));
+              
+              if(storedPosts)
+                storedPosts.forEach(post => {
+                  userPostsWrapper.innerHTML += `
+                  <div class="post__item">
+                        <p>
+                            post id: ${post.postId} <br>
+                            title: ${post.title} <br>
+                            ${post.body}
+                        </p>
+                  </div>`;
+                });
+
+              posts.reverse().forEach(post => {
+                userPostsWrapper.innerHTML += `
+                <div class="post__item">
+                      <p>
+                          post id: ${post.id} <br>
+                          title: ${post.title} <br>
+                          ${post.body}
+                      </p>
+                </div>`;
+              });
+
+              let buttonClose = userInfo.querySelector(".button-close__popup");
+              buttonClose.addEventListener("click", () => {
+                userInfo.innerHTML = "";
+                userInfo.classList.add("display-none");
+                document.getElementsByTagName("body")[0].classList.remove("overflow-hidden");
+              });
+
+              let buttonPost = userInfo.querySelector(".button-post__add");
+              buttonPost.addEventListener("click", () => {
+                addPost();
+              });
+            }
           });
 
           window.scrollTo({
@@ -218,7 +307,7 @@ function displayUsers(){
 
             document.getElementsByTagName("body")[0].classList.add("overflow-hidden");
 
-            buttonClose = userInfo.querySelector(".button-close__popup");
+            let buttonClose = userInfo.querySelector(".button-close__popup");
             buttonClose.addEventListener("click", () => {
               userInfo.innerHTML = "";
               userInfo.classList.add("display-none");

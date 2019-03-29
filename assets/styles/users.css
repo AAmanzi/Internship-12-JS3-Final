@@ -132,9 +132,11 @@
   padding: 20px;
   transition: all 0.1s ease-in;
   opacity: 0.8;
-  position: sticky;
-  top: 0;
-  left: 0;
+  width: 80%;
+  display: block;
+  margin-left: 30px;
+  border-bottom: 1px solid #30cec2;
+  border-top: 1px solid #30cec2; 
 }
 
 .scroll-top{
@@ -200,7 +202,6 @@
   width: 80%;
   margin: auto;
   flex-direction: column;
-  border-bottom: 1px solid #30cec2; 
   border-radius: 4px;
 }
 
@@ -221,5 +222,4 @@
   transition: all 0.1s ease-in;
   text-align: start;
   resize: none;
-  border-bottom: 1px solid #30cec2; 
 }
