@@ -21,7 +21,7 @@
 
 ::selection{
     color: #00baba;
-    background: #e8f8f8;
+    background: rgba(0, 186, 186, 0.1);
 }
 
 nav{

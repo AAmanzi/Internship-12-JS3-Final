@@ -20,6 +20,7 @@ document.querySelector(".button-users").addEventListener("click", () => {
 
 function displayLogin(){
   document.querySelector(".signup__container").classList.remove("visible");
+  document.querySelector(".signup__content").classList.add("display-none");
   
   document.querySelector(".login__container").classList.remove("display-none");
   document.querySelector(".login__container").classList.add("visible");
@@ -27,6 +28,7 @@ function displayLogin(){
 
 function displaySignup(){
   document.querySelector(".signup__container").classList.add("visible");
+  document.querySelector(".signup__content").classList.remove("display-none");
 
   document.querySelector(".header__image__container").classList.add("display-none");
   document.getElementsByTagName("main")[0].classList.add("display-none");
@@ -38,6 +40,7 @@ function displaySignup(){
 
 function displayMainPage(){
   document.querySelector(".signup__container").classList.remove("visible");
+  document.querySelector(".signup__content").classList.add("display-none");
 
   document.querySelector(".header__image__container").classList.remove("display-none");
   document.getElementsByTagName("main")[0].classList.remove("display-none");

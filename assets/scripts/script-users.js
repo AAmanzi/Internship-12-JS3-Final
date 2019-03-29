@@ -8,6 +8,7 @@ function displayUsers(){
   document.getElementsByTagName("footer")[0].classList.add("display-none");
   document.querySelector(".login__container").classList.add("display-none");
   document.querySelector(".login__container").classList.remove("visible");
+  document.querySelector(".signup__content").classList.add("display-none");
 
   (function addUserFunctionalities(){
     let userPlaceholder = document.querySelector(".main__users");
