@@ -18,8 +18,8 @@ function displayUsers(){
       (function loadUsers(){
         allUsers.forEach(user => {
           userPlaceholder.innerHTML += 
-          `<div id="${user.id}" class="users__item">
-            <img class="item__img" src="./assets/images/test_image.jpg" alt="Offer" />
+          `<div id="${user.id}" class="users__item ${isDark ? "background-dark": ""}">
+            <img class="item__img ${isDark ? "multiply": ""}" src="./assets/images/test_image.jpg" alt="Offer" />
             <img class="item__heart-shape ${isDark ? "item__heart-shape--alt": ""}" src="./assets/images/heart-shape.png" alt="Hearth Shape">
             <img class="item__heart-full ${isDark ? "item__heart-full--alt": ""}" src="./assets/images/heart.png" alt="Hearth Full">
             <p class="item__img-description ${isDark ? "item__img-description--alt": ""}">${user.name}</p>

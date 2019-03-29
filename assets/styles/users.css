@@ -223,3 +223,7 @@
   text-align: start;
   resize: none;
 }
+
+.multiply{
+  mix-blend-mode: multiply;
+}
