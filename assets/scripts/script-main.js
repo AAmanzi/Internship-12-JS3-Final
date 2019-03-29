@@ -1,4 +1,4 @@
-let loggedIn = false;
+let loggedIn = true;
 //SETUP NA FALSE PRIJE ROKA
 
 document.querySelector(".logo__container").addEventListener("click", () => {
@@ -130,12 +130,17 @@ function displayUsers(){
 
             userInfo.innerHTML += `
               <div class="user__posts__wrapper">
-                <button class="button-close__popup button-close__popup--alt">Close</button>
+              <button class="button-close__popup button-close__popup--alt">Close</button>
+                <section class="post__new">
+                  <input class="post__new-title" type="text" placeholder="Your post's title" required>
+                  <textarea type="text" class="post__new-body" cols="50" rows="5" placeholder="Write something here" required></textarea>
+                  <button class="button-post__add">Post</button>
+                </section>
               </div>`;
 
             let userPostsWrapper = userInfo.querySelector(".user__posts__wrapper");
 
-            posts.forEach(post => {
+            posts.reverse().forEach(post => {
               userPostsWrapper.innerHTML += `
               <div class="post__item">
                     <p>
@@ -155,7 +160,12 @@ function displayUsers(){
               userInfo.innerHTML = "";
               userInfo.classList.add("display-none");
               document.getElementsByTagName("body")[0].classList.remove("overflow-hidden");
-            })
+            });
+
+            buttonAddPost = userInfo.querySelector(".button-post__add");
+            buttonAddPost.addEventListener("click", () => {
+
+            });
           });
 
           window.scrollTo({
@@ -214,11 +224,13 @@ function displayUsers(){
               userInfo.classList.add("display-none");
               document.getElementsByTagName("body")[0].classList.remove("overflow-hidden");
             });
+            window.scrollTo({
+              top: 0,
+              left: 0,
+              behavior: 'smooth'
+            });
           });
       });
-
-
-
     });
   });
 };
