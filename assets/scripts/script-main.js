@@ -1,4 +1,4 @@
-let loggedIn = true;
+let loggedIn = false;
 let isDark = false;
 //SETUP NA FALSE PRIJE ROKA
 
