@@ -1,4 +1,4 @@
-let loggedIn = true;
+let loggedIn = false;
 //SETUP NA FALSE PRIJE ROKA
 
 document.querySelector(".logo__container").addEventListener("click", () => {
