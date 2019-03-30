@@ -1,13 +1,12 @@
 let loggedIn = false;
 let isDark = false;
-//SETUP NA FALSE PRIJE ROKA
 
 document.querySelector(".logo__container").addEventListener("click", () => {
   displayMainPage();
 });
 
 document.querySelector(".button-full").addEventListener("click", () => {
-  displaySignup();
+   localStorage.length ? displayLogin() : displaySignup();
 });
 
 document.querySelector(".button-login").addEventListener("click", () => {
@@ -21,6 +20,10 @@ document.querySelector(".button-users").addEventListener("click", () => {
 function displayLogin(){
   document.querySelector(".signup__container").classList.remove("visible");
   document.querySelector(".signup__content").classList.add("display-none");
+
+  document.querySelector(".header__image__container").classList.add("display-none");
+  document.getElementsByTagName("main")[0].classList.add("display-none");
+  document.getElementsByTagName("footer")[0].classList.add("display-none");
   
   document.querySelector(".login__container").classList.remove("display-none");
   document.querySelector(".login__container").classList.add("visible");
@@ -69,6 +72,7 @@ function addUser(){
 
   window.localStorage.setItem(newUser.username, newUser.password);
   
+  displayLogin();
   return true;
   
   function anyErrors(){
